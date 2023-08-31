@@ -1,4 +1,4 @@
-# RotorHazard Class Rank Best Percentage
+# RotorHazard Class Rank Last Heat Points
 "Last Heat Points" class ranking plugin for RotorHazard
 
 Ranks pilots based on cumulative points of all rounds in each heat in the class, with later heats ranked higher than earlier heats.
