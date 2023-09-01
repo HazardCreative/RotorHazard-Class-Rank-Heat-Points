@@ -13,7 +13,6 @@ def rank_heat_points(rhapi, race_class, _args):
 
     leaderboard = []
     ranked_pilots = []
-    rank_pos = 1
 
     for heat in reversed(heats):
         heat_result = rhapi.db.heat_results(heat)
@@ -22,17 +21,31 @@ def rank_heat_points(rhapi, race_class, _args):
 
             for line in heat_leaderboard:
                 if line['pilot_id'] not in ranked_pilots:
+
                     leaderboard.append({
                         'pilot_id': line['pilot_id'],
                         'callsign': line['callsign'],
                         'team_name': line['team_name'],
                         'heat': heat.display_name,
+                        'heat_id': heat.id,
                         'heat_points': line['points'],
-                        'position': rank_pos
                     })
 
                     ranked_pilots.append(line['pilot_id'])
-                    rank_pos += 1
+
+    # determine ranking
+    last_rank = None
+    last_heat_points = None
+    last_heat_id = None
+    for i, row in enumerate(leaderboard, start=1):
+        pos = i
+        if last_heat_points == row['heat_points'] and last_heat_id == row['heat_id']:
+            pos = last_rank
+        last_rank = pos
+        last_heat_points = row['heat_points']
+        last_heat_id = row['heat_id']
+
+        row['position'] = pos
 
     meta = {
         'rank_fields': [{
