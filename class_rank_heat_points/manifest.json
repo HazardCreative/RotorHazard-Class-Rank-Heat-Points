@@ -1,0 +1,13 @@
+{
+    "name": "Class Rank: Last Heat Points",
+    "author": "Michael Niggel",
+    "author_uri": "https://hazardcreative.com",
+    "description": "Ranks pilots based on cumulative points of all rounds in each heat in the class, with later heats ranked higher than earlier heats",
+    "info_uri": "https://github.com/HazardCreative/RotorHazard-Class-Rank-Heat-Points",
+    "license": "RotorHazard",
+    "license_uri": "https://github.com/RotorHazard/RotorHazard/blob/main/LICENSE",
+    "version": "1.0.1",
+    "required_rhapi_version": "1.0",
+    "update_uri": null,
+    "text_domain": null
+}
